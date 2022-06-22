@@ -1,0 +1,16 @@
+*{
+    background-color: #faf7e8
+}
+
+main{
+    margin-left: 15%;
+    margin-right: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post{
+    border: 1px solid black;
+}
