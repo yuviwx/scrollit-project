@@ -4,10 +4,11 @@ import SearchStyles from '../styles/SearchStyles.css'
 
 function App() {
   return (
-    <main>
+    <div>
       <Search style={SearchStyles}/>
+      <hr />
       <Posts />
-    </main>
+    </div>
   );
 }
 

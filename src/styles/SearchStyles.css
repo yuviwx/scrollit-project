@@ -1,0 +1,41 @@
+*{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0.3em;
+}
+
+#searchbar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#headline {
+    color: #0079D3;
+    display: inline-flex;
+    align-items: end;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#headline > #icon {
+    display: inline-block;
+    height: 1.5em;
+    width: 1.5em;
+    background-image: url(../images/reddit-48.ico);
+}
+
+#searchbar > form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#searchbar > form > label{
+    margin: 0.5em;
+}
+
+#input-bar{
+    margin: 0.5em;
+}
