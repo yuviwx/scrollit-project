@@ -20,7 +20,6 @@ export default function Search() {
         if(searchTerm.length === 0){
             return
         }
-        console.log("it goes here")
     }
 
     return (
