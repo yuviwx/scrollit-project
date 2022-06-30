@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { selectFilters } from "../features/filters";
-import {changeTerm, changeLimit, changeSort} from "../features/filters";
+import { selectFilters } from "../features/filtersSlice";
+import {changeTerm, changeLimit, changeSort} from "../features/filtersSlice";
 import { useDispatch } from "react-redux/es/exports";
 export default function Search() {
     const dispatch = useDispatch();
@@ -48,9 +48,11 @@ export default function Search() {
                     <section>
                     <label htmlFor="sortBy">sort</label>
                     <select name="sortBy" id="sortBy" value={sortBy} onChange={handleChange}>
-                        <option value="Relevance">best match</option>
-                        <option value="Newest">Newest first</option>
-                        <option value="Latest">Oldest first</option>
+                        <option value="relevance">Relevance</option>
+                        <option value="hot">Hot</option>
+                        <option value="top">Top</option>
+                        <option value="new">New</option>
+                        <option value="comments">Most Comments</option>
                     </select>
                     </section>
                 </div>
