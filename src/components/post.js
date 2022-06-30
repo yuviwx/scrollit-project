@@ -1,32 +1,22 @@
-import { useEffect } from "react"
-
-
-const encodedSource = (source) => {
-    console.log("source: " + source)
-        let encoded = source.replace('amp;s', 's')
-        while(encoded.includes('amp;')){
-            encoded = encoded.replace('amp;', '')
-        }
-        console.log("encoded: " + encoded)
-        return encoded
-}
-
-const getSource = (maxWidth, resolutions) => {
-    console.log(maxWidth)
-    for(let i = (resolutions.length - 1); i > 0; i--){
-        if(maxWidth >= resolutions[i].width) {
-           return resolutions[i];
-        }
-    }
-    return resolutions[0]
-}
-
 export default function Post({Data}) {
     let maxWidth = window.innerWidth - 4.8;
 
-    useEffect(() => {
+    const encodedSource = (source) => {
+            let encoded = source.replace('amp;s', 's')
+            while(encoded.includes('amp;')){
+                encoded = encoded.replace('amp;', '')
+            }
+            return encoded
+    }
 
-    }, [window.innerWidth])
+    const getSource = (maxWidth, resolutions) => {
+        for(let i = (resolutions.length - 1); i > 0; i--){
+            if(maxWidth >= resolutions[i].width) {
+               return resolutions[i];
+            }
+        }
+        return resolutions[0]
+    }
 
     let {width, height, url} = Data.preview ? getSource(maxWidth*0.7*0.85, Data.preview.images[0].resolutions)
      : {
