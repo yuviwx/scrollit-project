@@ -48,9 +48,11 @@ export default function Search() {
                     <section>
                     <label htmlFor="sortBy">sort</label>
                     <select name="sortBy" id="sortBy" value={sortBy} onChange={handleChange}>
-                        <option value="Relevance">best match</option>
-                        <option value="Newest">Newest first</option>
-                        <option value="Latest">Oldest first</option>
+                        <option value="relevance">Relevance</option>
+                        <option value="hot">Hot</option>
+                        <option value="top">Top</option>
+                        <option value="new">New</option>
+                        <option value="comments">Most Comments</option>
                     </select>
                     </section>
                 </div>

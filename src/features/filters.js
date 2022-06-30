@@ -3,9 +3,15 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const loadPosts = createAsyncThunk(
     'filters/loadPosts',
-    async () => {
+    async ({searchTerm, searchLimit, sortBy}) => {
+        console.log(`q=${searchTerm}&limit=${searchLimit}&sort=${sortBy}`)
+        console.log(searchTerm)
+        console.log(searchLimit)
+        console.log(sortBy)
+        const domain = searchTerm ? `https://www.reddit.com/search.json?q=${searchTerm}` : 'https://www.reddit.com/top.json?t=day';
+        const endPoint = domain + `&limit=${searchLimit}&sort=${sortBy}`
         try{
-            const res = await fetch('https://www.reddit.com/top.json?t=day');
+            const res = await fetch(endPoint);
             const jsonRes = await res.json();
             const data = jsonRes.data.children.map(data => data.data)
             console.log(data.map(data => data.preview))
@@ -56,4 +62,3 @@ export const filterSlice = createSlice({
 export default filterSlice.reducer;
 export const selectFilters = (state) => state.filters;
 export const {changeTerm, changeLimit, changeSort} = filterSlice.actions;
-export const selectPostList = (state) => state.filters.postList

@@ -10,8 +10,9 @@ export default function Posts() {
     const {postList, searchTerm, searchLimit, sortBy} = useSelector(selectFilters);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(loadPosts(searchTerm, searchLimit, sortBy))
-    },[])
+        console.log(`q=${searchTerm}&limit=${searchLimit}&sort=${sortBy}`)
+        dispatch(loadPosts({searchTerm:searchTerm, searchLimit:searchLimit, sortBy:sortBy}))
+    },[dispatch, searchLimit, searchTerm, sortBy])
 
     return (
     <main>
