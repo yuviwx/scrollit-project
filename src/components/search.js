@@ -33,7 +33,7 @@ export default function Search() {
                 type="text"
                 value= {searchTerm}
                 onChange= {handleChange}
-                placeholder="search" />
+                placeholder="search" required/>
                 <div>
                     <section>
                     <label htmlFor="searchLimit">Limit</label>
