@@ -11,7 +11,7 @@ export default function Posts() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(loadPosts(searchTerm, searchLimit, sortBy))
-    },[dispatch, searchLimit, searchTerm, sortBy])
+    },[])
 
     return (
     <main>
