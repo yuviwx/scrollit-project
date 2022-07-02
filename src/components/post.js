@@ -13,7 +13,7 @@ export default function Post({Data}) {
     }
 
     return(
-        <div className="post" onClick={handleClick} alt="go to post">
+        <div className="post" onClick={handleClick} >
             <span>go to post</span>
             {<img src={url} alt="" width={width} height={height} />}
             <h2>{Data.title}</h2>
