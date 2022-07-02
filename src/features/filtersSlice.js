@@ -24,7 +24,8 @@ export const filterSlice = createSlice({
         postList: [],
         searchTerm: "",
         searchLimit: 25,
-        sortBy: "relevance"
+        sortBy: "relevance",
+        didResize: false
     },
     reducers: {
         changeTerm: (state, action) => {
@@ -35,6 +36,9 @@ export const filterSlice = createSlice({
         },
         changeSort: (state, action) => {
             state.sortBy = action.payload
+        },
+        reSize: (state, action) => {
+            state.didResize = action.payload;
         }
     },
     extraReducers: {
@@ -50,6 +54,37 @@ export const filterSlice = createSlice({
     }
 })
 
+const encodedSource = (source) => {
+    let encoded = source.replace('amp;s', 's')
+    while(encoded.includes('amp;')){
+        encoded = encoded.replace('amp;', '')
+    }
+    return encoded
+}
+
+const getResolution = (maxWidth, resolutions) => {
+    for(let i = (resolutions.length - 1); i > 0; i--){
+        if(maxWidth >= resolutions[i].width) {
+           return resolutions[i];
+        }
+    }
+    return resolutions[0]
+}
+
+export const getSource = (maxWidth, post) => {
+    let source = null
+    if(post.preview) {
+        if(post.preview.images[0].source.width <= maxWidth) {
+            source = {...post.preview.images[0].source}
+        }else{
+            source = {...getResolution(maxWidth, post.preview.images[0].resolutions)}
+        }
+        let url = encodedSource(source.url) 
+        return {...source, url: url}
+    }
+    return null
+}
+
 export default filterSlice.reducer;
 export const selectFilters = (state) => state.filters;
-export const {changeTerm, changeLimit, changeSort} = filterSlice.actions;
+export const {changeTerm, changeLimit, changeSort, reSize} = filterSlice.actions;

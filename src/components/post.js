@@ -1,31 +1,12 @@
+import img from '../images/reddit-logo.png'
 export default function Post({Data}) {
-    let maxWidth = window.innerWidth - 4.8;
 
-    const encodedSource = (source) => {
-            let encoded = source.replace('amp;s', 's')
-            while(encoded.includes('amp;')){
-                encoded = encoded.replace('amp;', '')
-            }
-            return encoded
-    }
-
-    const getSource = (maxWidth, resolutions) => {
-        for(let i = (resolutions.length - 1); i > 0; i--){
-            if(maxWidth >= resolutions[i].width) {
-               return resolutions[i];
-            }
-        }
-        return resolutions[0]
-    }
-
-    let {width, height, url} = Data.preview ? getSource(maxWidth*0.7*0.85, Data.preview.images[0].resolutions)
+    let {width, height, url} = Data.source ? Data.source
      : {
-        url: "../images/reddit-logo.png",
+        url: img,
         width: 300,
         height: 108
     }
-    url = encodedSource(url) 
-
 
     return(
         <div className="post">
