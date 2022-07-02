@@ -15,7 +15,7 @@ export default function Posts() {
         dispatch(loadPosts({searchTerm:searchTerm, searchLimit:searchLimit, sortBy:sortBy}));
     },[dispatch, searchLimit, searchTerm, sortBy])
 
-    const func = () => {newPostList = postList.map(post => ({title: post.title, source: getSource(maxWidth, post)}))};
+    const func = () => {newPostList = postList.map(post => ({title: post.title, source: getSource(maxWidth, post), postURL: post.url}))};
     func();
     window.addEventListener('resize',() => {
         console.log('enter resize');
@@ -33,7 +33,7 @@ export default function Posts() {
     return (
     <main>
         {
-            newPostList && newPostList.map((post, index ) => <Post key={index} Data={post} />)
+            newPostList && newPostList.map((post, index ) => <Post key={index} Data={post}/>)
         }
     </main>
     );
