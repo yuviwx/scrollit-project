@@ -8,7 +8,7 @@ import { reSize } from "../features/filtersSlice";
 export default function Posts() {
     let newPostList = []
     const dispatch = useDispatch();
-    let maxWidth = window.innerWidth *0.7*0.85;
+    let maxWidth = window.outerWidth < 480 ? window.innerWidth*0.9 : window.innerWidth *0.7*0.85;
     const {postList, searchTerm, searchLimit, sortBy, didResize} = useSelector(selectFilters);
 
     useEffect(() => {
