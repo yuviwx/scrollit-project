@@ -42,3 +42,10 @@ main {
 .post:hover span{
     visibility: visible;
 }
+
+@media only screen and (max-width: 480px) {
+    .post{
+        width: 95% !important;
+    }
+    
+}

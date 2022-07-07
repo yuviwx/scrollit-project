@@ -26,7 +26,7 @@ export default function Posts() {
     })
     useEffect(()=>{
         if(didResize){
-            func()
+            func();
         };
 
     },[didResize, func])
